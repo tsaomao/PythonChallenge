@@ -12,7 +12,7 @@ import re
 # nothing value here is 16044 so new nothing Start value is:
 nothing = ['8022']
 
-for x in range(0, 200):
+for x in range(0, 164):
 	url = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing={}'.format(nothing[0])	
 	print (url)
 	r = requests.get(url)
@@ -23,4 +23,8 @@ for x in range(0, 200):
 	nothing = re.findall('and the next nothing is ([0-9]*)', r.text)
 	print('retrieval: {}, full text: {}, nothing: {}'.format(x, r.text, nothing[0]))
 
+# Crashes out on URL: http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=66831
 
+finalurl = "http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=66831"
+fin = requests.get(finalurl)
+print("http://www.pythonchallenge.com/pc/def/{}".format(fin.text))
